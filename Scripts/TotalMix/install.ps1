@@ -15,10 +15,10 @@ New-Item `
   -ItemType Directory `
   -Path $destPath
 
-# Copy all items in the script directory, excluding the script itself
+# Copy all items in the script directory, excluding this script
 Get-ChildItem -Path $scriptDirectory | `
   Where-Object { $_.FullName -ne $scriptPath } | `
-  Copy-Item -Destination $destPath -Recurse -Force
+  Copy-Item -Destination $destPath -Force
 
 
 # Add "Change" and "Write" rights to the log directory for local users
@@ -54,3 +54,5 @@ $acl.AddAccessRule($accessRule)
 
 # Apply the modified ACL to the file
 Set-Acl -Path $logDirectory -AclObject $acl
+
+Write-Host "Installation complete. Please restart your computer to apply the changes."
