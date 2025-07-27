@@ -8,6 +8,10 @@ By default, TotalMix and ARC USB settings are stored in the user profile,
 which means they are not shared across different user accounts.
 This can be inconvenient if you have multiple users who need to access the same settings.
 
+Thanks to [maggie33](https://forum.rme-audio.de/profile.php?id=40292)
+for the concept and the prototype code.
+
+
 ## Installation
 
 1. If you are familiar with Git, clone this repository to a temporary folder
