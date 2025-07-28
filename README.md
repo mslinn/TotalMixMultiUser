@@ -26,13 +26,14 @@ for the concept and the code for the two working prototypes.
     git clone https://github.com/mslinn/TotalMixMultiUser.git
     ```
 
-    The above command creates a directory named `TotalMixMultiUser`
+    The above commands create a directory named `TotalMixMultiUser`
     in your home directory.
 
 3. If you did not clone the git repository, copy and paste the following commands
    into a PowerShell window.
-   These commands download a ZIP file of the GitHub project and extract it to
-   the same directory that the `git clone` command would create.
+   These commands download a ZIP file of the GitHub project and extract the
+   contents, then renames the new directory containing the GitHub project
+   to the same name that the `git clone` command creates.
 
    a. Download the ZIP file.
 
