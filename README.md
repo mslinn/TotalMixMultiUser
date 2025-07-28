@@ -17,7 +17,7 @@ for the concept and the prototype code.
 1. If you are familiar with Git, clone this repository to a temporary folder
    on your computer.
    Otherwise, click on the down arrow in the bright green button that says
-   <kbd style="background: #238636; color: white; border-radius: 7px; padding: 6px;">&lt;&gt; Code &#9660;</kbd>,
+   <kbd style="background: #238636; color: white; border-radius: 7px; padding: 6px;">&lt;&gt;&nbsp;Code&nbsp;&#9660;</kbd>,
    then click on **Download ZIP**.
    Unzip the downloaded file to a temporary folder on your computer.
 
