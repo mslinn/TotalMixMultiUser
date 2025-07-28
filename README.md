@@ -19,55 +19,64 @@ for the concept and the prototype code.
    select **Windows PowerShell**.
 
 2. If you are familiar with Git, clone this repository to your home directory.
+   The following syntax works in PowerShell and Bash:
 
-   a. The following syntax works in PowerShell and Bash:
-
-      ```powershell
-      cd ~
-      git clone https://github.com/mslinn/TotalMixMultiUser.git
-      ```
-
-      The above command creates a directory named `TotalMixMultiUser`
-      in your home directory.
-
-   b. If you cloned the git repository,
-     change to the directory where you cloned it to.
-     For example, if you cloned it to your home folder, type something like this:
-
-     ```powershell
-     cd ~\TotalMixMultiUser
-     ```
-
-3. If you did not clone the git repository, download the ZIP file
-   and unzip it to `~\TotalMixMultiUser` using PowerShell, then
-   rename the directory to the same name as the above `git clone`
-   command would create, and then change to the new directory as follows:
-
-   ```powershell
-    $uri = "https://github.com/mslinn/TotalMixMultiUser/archive/refs/heads/master.zip"
-    $dest = "~\Downloads\TotalMixMultiUser-master.zip"
-    Invoke-WebRequest -Uri $uri -OutFile $dest
-    Expand-Archive `
-      -DestinationPath ~\ `
-      -Force `
-      -Path $dest
-    Rename-Item `
-      -Path "~/TotalMixMultiUser-master"
-      -NewName "TotalMixMultiUser"
-    cd ~\TotalMixMultiUser
+    ```powershell
+    cd ~
+    git clone https://github.com/mslinn/TotalMixMultiUser.git
     ```
 
-4. Run the installation script:
+    The above command creates a directory named `TotalMixMultiUser`
+    in your home directory.
+
+3. If you did not clone the git repository, copy and paste the following commands
+   into a PowerShell window.
+   These commands download a ZIP file of the GitHub project and extracts it to
+   the same directory that the `git clone` command would create.
+
+   a. Download the ZIP file.
+
+      ```powershell
+      $uri = "https://github.com/mslinn/TotalMixMultiUser/archive/refs/heads/master.zip"
+      $dest = "~\Downloads\TotalMixMultiUser-master.zip"
+      Invoke-WebRequest -Uri $uri -OutFile $dest
+      ```
+
+   b. Unzip it to `~\TotalMixMultiUser` using PowerShell.
+
+      ```powershell
+      Expand-Archive `
+        -DestinationPath ~\ `
+        -Force `
+        -Path $dest
+      ```
+
+   c. Rename the directory to the same name as the above `git clone`
+      command would create.
+
+      ```powershell
+      Rename-Item `
+        -Path "~/TotalMixMultiUser-master"
+        -NewName "TotalMixMultiUser"
+      ```
+
+4. Change to the new directory.
+
+   ```powershell
+   cd ~\TotalMixMultiUser
+   ```
+
+5. Run the installation script:
 
    ```powershell
    Scripts\install.ps1
    ```
 
-5. If you are prompted to run the script, type `Y` and press Enter.
+6. If you are prompted to run the script, type `Y` and press Enter.
 
-6. Restart your computer.
+7. Restart your computer.
 
-7. Login to various user accounts to verify that TotalMix works in each account.
+8. Login to various user accounts to verify that TotalMix works in each account.
    If you have an RME ARC USB, verify that it works in each account as well.
    The log files for each user are stored in the
    `C:\ProgramData\Scripts\TotalMixMultiUser\Logs\` directory.
