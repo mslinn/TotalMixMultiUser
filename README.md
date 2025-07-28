@@ -16,16 +16,17 @@ for the concept and the prototype code.
 
 1. If you are familiar with Git, clone this repository to a temporary folder
    on your computer.
-   Otherwise, click on the down arrow in the bright green button that says
-   <kbd style="background: #238636; color: white; border-radius: 7px; padding: 6px;">&lt;&gt;&nbsp;Code&nbsp;&#9660;</kbd>,
-   then click on **Download ZIP**.
-   Unzip the downloaded file to a temporary folder on your computer.
+
+   ```powershell
+   git clone
+   ```
 
 2. Open a PowerShell window.
    One way to do this is to right-click the <kbd>Start</kbd> button and
    select **Windows PowerShell**.
 
-3. If you cloned the git repository, change to the directory where you clone it to.
+3. If you cloned the git repository,
+   change to the directory where you cloned it to.
    For example, if you cloned it to your home folder, type something like this:
 
    ```powershell
@@ -33,7 +34,7 @@ for the concept and the prototype code.
    ```
 
    If you did not clone the git repository, download the ZIP file
-   and unzip it to `~\TotalMixMultiUser` as follows:
+   and unzip it to `~\TotalMixMultiUser` using PowerShell as follows:
 
    ```powershell
     $uri = "https://github.com/mslinn/totalmix_multiuser/archive/refs/heads/master.zip"
