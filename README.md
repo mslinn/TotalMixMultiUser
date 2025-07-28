@@ -31,7 +31,7 @@ for the concept and the prototype code.
 
 3. If you did not clone the git repository, copy and paste the following commands
    into a PowerShell window.
-   These commands download a ZIP file of the GitHub project and extracts it to
+   These commands download a ZIP file of the GitHub project and extract it to
    the same directory that the `git clone` command would create.
 
    a. Download the ZIP file.
