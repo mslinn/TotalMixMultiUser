@@ -26,7 +26,7 @@ if (-not $exePath) {
 
 $processName = [System.IO.Path]::GetFileNameWithoutExtension($exePath)
 $currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
-$logPath = "$($ProgramData)\Scripts\totalmix_multiuser\Logs\$($currentUser).log"
+$logPath = "$($ProgramData)\Scripts\TotalMixMultiUser\Logs\$($currentUser).log"
 Add-Content `
   -Path $logPath `
   -Value "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] Start Script started by $currentUser"

@@ -25,19 +25,34 @@ for the concept and the prototype code.
    One way to do this is to right-click the <kbd>Start</kbd> button and
    select **Windows PowerShell**.
 
-3. Change to the directory where you cloned or downloaded this git repository
-   and open the `Scripts` folder.
-   For example, if you cloned or unzipped it to your `Downloads` folder,
-   type something like this:
+3. If you cloned the git repository, change to the directory where you clone it to.
+   For example, if you cloned it to your home folder, type something like this:
 
    ```powershell
-   cd ~\Downloads\totalmix_multiuser\Scripts
+   cd ~\TotalMixMultiUser
    ```
+
+   If you did not clone the git repository, download the ZIP file
+   and unzip it to `~\TotalMixMultiUser` as follows:
+
+   ```powershell
+    $uri = "https://github.com/mslinn/totalmix_multiuser/archive/refs/heads/master.zip"
+    $dest = "~\Downloads\totalmix_multiuser-master.zip"
+    Invoke-WebRequest -Uri $uri -OutFile $dest
+    Expand-Archive `
+      -DestinationPath ~\ `
+      -Force `
+      -Path $dest
+    Rename-Item `
+      -Path "~/totalmix_multiuser-master"
+      -NewName "TotalMixMultiUser"
+    cd ~\TotalMixMultiUser
+    ```
 
 4. Run the installation script:
 
    ```powershell
-   .\install.ps1
+   Scripts\install.ps1
    ```
 
 5. If you are prompted to run the script, type `Y` and press Enter.
@@ -47,4 +62,4 @@ for the concept and the prototype code.
 7. Login to various user accounts to verify that TotalMix works in each account.
    If you have an RME ARC USB, verify that it works in each account as well.
    The log files for each user are stored in the
-   `C:\ProgramData\Scripts\TotalMix\Logs\` directory.
+   `C:\ProgramData\Scripts\TotalMixMultiUser\Logs\` directory.
