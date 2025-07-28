@@ -76,9 +76,9 @@ for the concept and the prototype code.
 
 7. Restart your computer.
 
-8. Login to various user accounts to verify that TotalMix works in each account.
+8. Login to various user accounts on your computer to verify that TotalMix
+   works for each user.
    If you have an RME ARC USB, verify that it works in each account as well.
    The log files for each user are stored in
    `C:\ProgramData\Scripts\TotalMixMultiUser\Logs\`.
-   Verify that each user has a log file in that directory
-   and that the log file contains the expected information.
+   If errors occur, check the log files for each user to see what went wrong.
