@@ -14,40 +14,45 @@ for the concept and the prototype code.
 
 ## Installation
 
-1. If you are familiar with Git, clone this repository to a temporary folder
-   on your computer.
-
-   ```powershell
-   git clone
-   ```
-
-2. Open a PowerShell window.
+1. Open a PowerShell window.
    One way to do this is to right-click the <kbd>Start</kbd> button and
    select **Windows PowerShell**.
 
-3. If you cloned the git repository,
-   change to the directory where you cloned it to.
-   For example, if you cloned it to your home folder, type something like this:
+2. If you are familiar with Git, clone this repository to your home directory.
 
-   ```powershell
-   cd ~\TotalMixMultiUser
-   ```
+   a. The following syntax works in PowerShell and Bash:
 
-   If you did not clone the git repository, download the ZIP file
-   and unzip it to `~\TotalMixMultiUser` using PowerShell,
-   rename the directory to something meaningful, then
+      ```powershell
+      cd ~
+      git clone https://github.com/mslinn/TotalMixMultiUser.git
+      ```
+
+      The above command creates a directory named `TotalMixMultiUser`
+      in your home directory.
+
+   b. If you cloned the git repository,
+     change to the directory where you cloned it to.
+     For example, if you cloned it to your home folder, type something like this:
+
+     ```powershell
+     cd ~\TotalMixMultiUser
+     ```
+
+3. If you did not clone the git repository, download the ZIP file
+   and unzip it to `~\TotalMixMultiUser` using PowerShell, then
+   rename the directory to something meaningful, and then
    change to the new directory as follows:
 
    ```powershell
-    $uri = "https://github.com/mslinn/totalmix_multiuser/archive/refs/heads/master.zip"
-    $dest = "~\Downloads\totalmix_multiuser-master.zip"
+    $uri = "https://github.com/mslinn/TotalMixMultiUser/archive/refs/heads/master.zip"
+    $dest = "~\Downloads\TotalMixMultiUser-master.zip"
     Invoke-WebRequest -Uri $uri -OutFile $dest
     Expand-Archive `
       -DestinationPath ~\ `
       -Force `
       -Path $dest
     Rename-Item `
-      -Path "~/totalmix_multiuser-master"
+      -Path "~/TotalMixMultiUser-master"
       -NewName "TotalMixMultiUser"
     cd ~\TotalMixMultiUser
     ```
