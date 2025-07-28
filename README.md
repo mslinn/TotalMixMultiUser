@@ -40,8 +40,8 @@ for the concept and the prototype code.
 
 3. If you did not clone the git repository, download the ZIP file
    and unzip it to `~\TotalMixMultiUser` using PowerShell, then
-   rename the directory to something meaningful, and then
-   change to the new directory as follows:
+   rename the directory to the same name as the above `git clone`
+   command would create, and then change to the new directory as follows:
 
    ```powershell
     $uri = "https://github.com/mslinn/TotalMixMultiUser/archive/refs/heads/master.zip"
@@ -71,3 +71,5 @@ for the concept and the prototype code.
    If you have an RME ARC USB, verify that it works in each account as well.
    The log files for each user are stored in the
    `C:\ProgramData\Scripts\TotalMixMultiUser\Logs\` directory.
+   Verify that each user has a log file in that directory
+   and that the log file contains the expected information.
