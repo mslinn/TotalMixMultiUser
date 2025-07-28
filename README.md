@@ -80,5 +80,5 @@ for the concept and the code for the two working prototypes.
    works for each user.
    If you have an RME ARC USB, verify that it works in each account as well.
    The log files for each user are stored in
-   `C:\ProgramData\Scripts\TotalMixMultiUser\Logs\`.
+   `%ProgramData%\Scripts\TotalMixMultiUser\Logs\`.
    If errors occur, check the log files for each user to see what went wrong.
