@@ -57,7 +57,7 @@ for the concept and the code for the two working prototypes.
 
       ```powershell
       Rename-Item `
-        -Path "~/TotalMixMultiUser-master"
+        -Path "~/TotalMixMultiUser-master" `
         -NewName "TotalMixMultiUser"
       ```
 
