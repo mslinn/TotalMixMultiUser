@@ -9,7 +9,7 @@ which means they are not shared across different user accounts.
 This can be inconvenient if you have multiple users who need to access the same settings.
 
 Thanks to [maggie33](https://forum.rme-audio.de/profile.php?id=40292)
-for the concept and the prototype code.
+for the concept and the code for the two working prototypes.
 
 
 ## Installation
