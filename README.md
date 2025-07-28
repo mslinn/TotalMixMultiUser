@@ -34,7 +34,9 @@ for the concept and the prototype code.
    ```
 
    If you did not clone the git repository, download the ZIP file
-   and unzip it to `~\TotalMixMultiUser` using PowerShell as follows:
+   and unzip it to `~\TotalMixMultiUser` using PowerShell,
+   rename the directory to something meaningful, then
+   change to the new directory as follows:
 
    ```powershell
     $uri = "https://github.com/mslinn/totalmix_multiuser/archive/refs/heads/master.zip"
