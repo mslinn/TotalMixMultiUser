@@ -19,7 +19,10 @@ for the concept and the code for the two working prototypes.
    select **Windows PowerShell**.
 
 2. If you are familiar with Git, clone this repository to your home directory.
-   The following syntax works in PowerShell and Bash:
+   The following syntax works in PowerShell and Bash.
+   **Beware: the WLS home directory is not the same as the Windows home directory,
+   so if you use WSL `bash`, you should perform `git clone`
+   in the home directory of a Windows user!**
 
     ```powershell
     cd ~
