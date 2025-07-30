@@ -15,22 +15,19 @@ for the concept and the code for the two working prototypes.
 ## Installation
 
 1. If you have not already set the PowerShell execution policy to allow
-   running scripts:
-   a. Open an elevated PowerShell window.
+   running scripts for the current Windows user:
+
+   a. Open a normal PowerShell window.
       One way to do this is to right-click the <kbd>Start</kbd> button and
       select **Windows PowerShell (Admin)**.
 
    b. Run the following command:
 
       ```powershell
-      Set-ExecutionPolicy RemoteSigned
+      Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
       ```
 
-2. Open a PowerShell window.
-   One way to do this is to right-click the <kbd>Start</kbd> button and
-   select **Windows PowerShell**.
-
-3. If you are familiar with Git, clone this repository to your home directory.
+2. If you are familiar with Git, clone this repository to your home directory.
    The following syntax works in PowerShell and Bash.
    **Beware: the WLS home directory is not the same as the Windows home directory,
    so if you use WSL `bash`, you should perform `git clone`
@@ -44,7 +41,7 @@ for the concept and the code for the two working prototypes.
     The above commands create a directory named `TotalMixMultiUser`
     in your home directory.
 
-4. If you did not clone the git repository, copy and paste the following commands
+3. If you did not clone the git repository, copy and paste the following commands
    into a PowerShell window.
    These commands download a ZIP file of the GitHub project and extract the
    contents, then renames the new directory containing the GitHub project
@@ -76,23 +73,23 @@ for the concept and the code for the two working prototypes.
         -NewName "TotalMixMultiUser"
       ```
 
-5. Change to the new directory.
+4. Change to the new directory.
 
    ```powershell
    cd ~\TotalMixMultiUser
    ```
 
-6. Run the installation script:
+5. Run the installation script:
 
    ```powershell
    Scripts\install.ps1
    ```
 
-7. If you are prompted to run the script, type `Y` and press Enter.
+6. If you are prompted to run the script, type `Y` and press Enter.
 
-8. Restart your computer.
+7. Restart your computer.
 
-9. Login to various user accounts on your computer to verify that TotalMix
+8. Login to various user accounts on your computer to verify that TotalMix
    works for each user.
    If you have an RME ARC USB, verify that it works in each account as well.
    The log files for each user are stored in
