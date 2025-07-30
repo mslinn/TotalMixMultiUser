@@ -44,7 +44,7 @@ for the concept and the code for the two working prototypes.
 3. If you did not clone the git repository, copy and paste the following commands
    into a PowerShell window.
    These commands download a ZIP file of the GitHub project and extract the
-   contents, then renames the new directory containing the GitHub project
+   contents, then rename the new directory containing the GitHub project
    to the same name that the `git clone` command creates.
 
    a. Download the ZIP file.

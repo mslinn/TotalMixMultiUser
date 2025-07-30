@@ -18,7 +18,7 @@ function Register-TotalMixTask {
       [string]$ScriptName,
       [string]$UserId,
       [string]$GroupId,
-      [ValidateSet("LeastPrivilege", "Highest")]
+      [ValidateSet("Limited", "Highest")]
       [string]$RunLevel,
       [array]$SessionStates,
       [int]$LogonDelaySeconds = 0
@@ -38,7 +38,15 @@ function Register-TotalMixTask {
     $triggers += $logonTrigger
 
     foreach ($state in $SessionStates) {
-      $triggers += New-ScheduledTaskTrigger -AtSessionStateChange -SessionState $state
+      # See https://learn.microsoft.com/en-us/powershell/module/scheduledtasks/new-scheduledtasktrigger
+      if ($state -eq "Unlock") {
+        # Create an event trigger for workstation unlock (Event ID 4801)
+        $triggers += New-ScheduledTaskTrigger -AtEvent -Source 'Microsoft-Windows-Security-Auditing' -Id 4801
+      } elseif ($state -eq "AtLogon") {
+        $triggers += New-ScheduledTaskTrigger -AtLogon
+      } else {
+        $triggers += New-ScheduledTaskTrigger -At $state
+      }
     }
 
     # Define principal
@@ -49,33 +57,34 @@ function Register-TotalMixTask {
     }
 
     # Settings
-    $idle = New-ScheduledTaskIdleSettings -StopOnIdleEnd -RestartOnIdle:$false
+    $idle = New-ScheduledTaskSettingsSet -DontStopOnIdleEnd:$false -RestartOnIdle:$false
 
     $settings = New-ScheduledTaskSettingsSet `
-      -AllowStartIfOnBatteries `
-      -StopIfGoingOnBatteries `
       -AllowHardTerminate:$false `
-      -StartWhenAvailable `
-      -RunOnlyIfNetworkAvailable:$false `
+      -AllowStartIfOnBatteries `
       -AllowStartOnDemand `
-      -Enabled `
-      -Hidden:$false `
-      -RunOnlyIfIdle:$false `
       -DisallowStartOnRemoteAppSession:$false `
-      -UseUnifiedSchedulingEngine `
+      -Enabled `
       -ExecutionTimeLimit (New-TimeSpan -Seconds 0) `
+      -Hidden:$false `
       -MultipleInstances IgnoreNew `
-      -Priority 7
+      -Priority 7 `
+      -RunOnlyIfIdle:$false `
+      -RunOnlyIfNetworkAvailable:$false `
+      -StartWhenAvailable `
+      -StopIfGoingOnBatteries `
+      -UseUnifiedSchedulingEngine
 
     $settings.IdleSettings = $idle
 
-    Register-ScheduledTask -TaskName $TaskName `
-      -TaskPath "\$scriptDirectory\" `
+    Register-ScheduledTask `
       -Action $Action `
-      -Trigger $triggers `
+      -Description $Description `
       -Principal $principal `
       -Settings $settings `
-      -Description $Description
+      -TaskName $TaskName `
+      -TaskPath "\$scriptDirectory\" `
+      -Trigger $triggers
 }
 
 function InitializeTotalMixLogDirectory {
@@ -97,8 +106,8 @@ function InitializeTotalMixLogDirectory {
     # Define the identity (local Users group) and the access rights
     $identity = "BUILTIN\Users"
     $fileSystemRights = `
-      [System.Security.AccessControl.FileSystemRights]::Write, `
-      [System.Security.AccessControl.FileSystemRights]::DeleteSubdirectoriesAndFiles
+      [System.Security.AccessControl.FileSystemRights]::DeleteSubdirectoriesAndFiles, `
+      [System.Security.AccessControl.FileSystemRights]::Write
 
     # Create a new FileSystemAccessRule
     $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule(
@@ -142,22 +151,25 @@ InitializeTotalMixLogDirectory -LogDirectoryPath "$ScriptFolder\Logs"
 
 # Register TotalMixFX MultiUser Start Task
 Register-TotalMixTask `
-  -TaskName "TotalMixFX MultiUser Start" `
   -Description "Starts TotalMixFX for current User on logon." `
-  -ScriptName "StartTotalMixFX.ps1" `
   -GroupId "S-1-5-32-545" `
-  -RunLevel "LeastPrivilege" `
-  -SessionStates @("Unlock", "ConsoleConnect") `
-  -LogonDelaySeconds 5
+  -LogonDelaySeconds 5 `
+  -RunLevel "Limited" `
+  -ScriptName "StartTotalMixFX.ps1" `
+  -SessionStates @("AtLogon") `
+  -TaskName "TotalMixFX MultiUser Start"
+# -SessionStates @("AtLogon", "ConsoleConnect", "Unlock") `
+
 
 # Register TotalMixFX MultiUser Terminate Task
 Register-TotalMixTask `
-  -TaskName "TotalMixFX MultiUser Terminate" `
   -Description "Terminates all TotalMixFX Instances on Login." `
-  -ScriptName "TerminateTotalMixFX.ps1" `
-  -UserId "S-1-5-18" `
   -RunLevel "Highest" `
-  -SessionStates @("RemoteConnect", "Unlock")
+  -ScriptName "TerminateTotalMixFX.ps1" `
+  -SessionStates @("AtLogon") `
+  -TaskName "TotalMixFX MultiUser Terminate" `
+  -UserId "S-1-5-18"
+  # -SessionStates @("RemoteConnect", "Unlock")
 
 Write-Host "Scheduled tasks for multiuser support of TotalMix FX and ARC/USB have been created."
 Write-Host "Installation complete. Please restart your computer to apply the changes."
