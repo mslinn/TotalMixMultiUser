@@ -30,16 +30,11 @@ for the concept and the code for the two working prototypes.
    One way to do this is to right-click the <kbd>Start</kbd> button and
    select **Windows PowerShell**.
 
-<<<<<<< HEAD
 3. If you are familiar with Git, clone this repository to your home directory.
-   The following syntax works in PowerShell and Bash:
-=======
-2. If you are familiar with Git, clone this repository to your home directory.
    The following syntax works in PowerShell and Bash.
    **Beware: the WLS home directory is not the same as the Windows home directory,
    so if you use WSL `bash`, you should perform `git clone`
    in the home directory of a Windows user!**
->>>>>>> f26f8fb5358acb9d74a589dd79c06e09d7b183eb
 
     ```powershell
     cd ~
