@@ -19,7 +19,7 @@ for the concept and the code for the two working prototypes.
 
    a. Open a normal PowerShell window.
       One way to do this is to right-click the <kbd>Start</kbd> button and
-      select **Windows PowerShell (Admin)**.
+      select **Windows PowerShell**.
 
    b. Run the following command:
 
