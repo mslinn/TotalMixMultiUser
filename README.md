@@ -1,5 +1,7 @@
 # RME TotalMix Multi-User Scripts
 
+** This is a work in progress; nothing works yet. **
+
 See [Multi-User Windows Support for RME TotalMix and ARC USB](https://www.mslinn.com/av_studio/320-totalmix-multi-user.html).
 
 These scripts allow you to use RME TotalMix and an optional ARC USB controller
